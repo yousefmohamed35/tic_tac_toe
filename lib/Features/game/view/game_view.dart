@@ -7,7 +7,12 @@ class GameView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: GameViewBody(),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 40, horizontal: 16),
+          child: GameViewBody(),
+        ),
+      ),
     );
   }
 }
