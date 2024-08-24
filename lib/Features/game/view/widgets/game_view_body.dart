@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_app/Features/game/view/widgets/grid_view.dart';
+import 'package:tic_tac_app/Features/game/view/widgets/player_is_playing.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/team_name_section.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/tic_tac_board.dart';
-
 
 class GameViewBody extends StatelessWidget {
   const GameViewBody({super.key});
@@ -11,12 +12,23 @@ class GameViewBody extends StatelessWidget {
     return const Column(
       children: [
         TeamNameSection(),
-        const SizedBox(height: 16),
+        SizedBox(height: 8),
         TicTacBoard(),
-        const SizedBox(height: 16),
-      
+        SizedBox(height: 16),
+        PlayerIsPlaying(
+          text:'X',
+        ),
+        SizedBox(height: 32),
+        GridGameView(),
+        SizedBox(height: 32),
+        CircleAvatar(
+          radius: 50,
+          child: Text('Timer'),
+        ),
       ],
     );
   }
 }
+
+
 
