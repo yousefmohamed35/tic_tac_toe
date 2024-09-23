@@ -1,3 +1,7 @@
+enum Player{X,O,none}
+ 
+ 
+
 List<String> displayXO = ["", "", "", "", "", "", "", "", ""];
 bool oTurn = false;
 String result = "";
