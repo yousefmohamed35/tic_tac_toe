@@ -14,6 +14,8 @@ class GameBlocCubit extends Cubit<GameBlocState> {
             winner: Player.none,
           ),
         );
+  int scoreOfX = 0;
+  int scoreOfO = 0;
   void makeMove(int index) {
     if (state.board[index] == Player.none && !state.isGameOver) {
       final newBoard = List<Player>.from(state.board);
@@ -22,6 +24,11 @@ class GameBlocCubit extends Cubit<GameBlocState> {
       final newPlayer = state.currentPlayer == Player.X ? Player.O : Player.X;
 
       final winner = checkWinner(newBoard);
+      if (winner == Player.X) {
+        scoreOfX++;
+      } else if (winner == Player.O) {
+        scoreOfO++;
+      }
       final isGameOver =
           winner != Player.none || !newBoard.contains(Player.none);
 
@@ -57,5 +64,20 @@ class GameBlocCubit extends Cubit<GameBlocState> {
       return displayXO[2];
     }
     return Player.none;
+  }
+
+  void restartGame() {
+    emit(GameBlocInitial(
+      board: List.generate(9, (_) => Player.none),
+      currentPlayer: Player.X,
+      isGameOver: false,
+      winner: Player.none,
+    ));
+  }
+
+  void newGame() {
+    scoreOfX = 0;
+    scoreOfO = 0;
+    restartGame();
   }
 }

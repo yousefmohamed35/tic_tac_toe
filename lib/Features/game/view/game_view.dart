@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tic_tac_app/Features/game/data/cubit/game_bloc_cubit.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/game_view_body.dart';
 
 class GameView extends StatelessWidget {
@@ -6,11 +8,14 @@ class GameView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 40, horizontal: 16),
-          child: GameViewBody(),
+          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
+          child: BlocProvider(
+            create: (context) => GameBlocCubit(),
+            child:const GameViewBody(),
+          ),
         ),
       ),
     );

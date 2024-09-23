@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tic_tac_app/Features/game/data/cubit/game_bloc_cubit.dart';
 import 'package:tic_tac_app/Features/game/data/data.dart';
 import 'package:tic_tac_app/constant.dart';
 
-class GameBoxOXO extends StatefulWidget {
+class GameBoxOXO extends StatelessWidget {
   const GameBoxOXO({
     super.key,
-    required this.index,
+    required this.index, required this.state,
   });
   final int index;
-  @override
-  State<GameBoxOXO> createState() => _GameBoxOXOState();
-}
-
-class _GameBoxOXOState extends State<GameBoxOXO> {
+  final GameBlocState state;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          // Update the game state
-        });
-        ontapped(widget.index);
+        context.read<GameBlocCubit>().makeMove(index);
       },
       child: Container(
         alignment: Alignment.center,
@@ -30,7 +25,11 @@ class _GameBoxOXOState extends State<GameBoxOXO> {
           color: kPrimaryColor,
         ),
         child: Text(
-          displayXO[widget.index],
+          state.board[index] == Player.X
+              ? 'X'
+              : state.board[index] == Player.O
+                  ? 'O'
+                  : '',
           style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
         ),
       ),
