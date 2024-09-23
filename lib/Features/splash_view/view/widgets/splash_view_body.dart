@@ -38,7 +38,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           child: Image.asset('assets/images/logo.png'),
         ),
         const SizedBox(height: 20),
-       SlidingText(slidingAnimation: slidingAnimation)
+        SlidingText(slidingAnimation: slidingAnimation)
       ],
     );
   }
@@ -60,7 +60,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        GoRouter.of(context).push('/home');
+        GoRouter.of(context).replace('/home');
       },
     );
   }
