@@ -20,10 +20,7 @@ class _GameBoxOXOState extends State<GameBoxOXO> {
         setState(() {
           // Update the game state
         });
-        if (displayXO[widget.index] == "") {
-          displayXO[widget.index] = oTurn ? "O" : "X";
-          oTurn = !oTurn;
-        }
+        ontapped(widget.index);
       },
       child: Container(
         alignment: Alignment.center,

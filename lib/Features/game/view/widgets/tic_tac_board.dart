@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_app/Features/game/data/data.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/result.dart';
 
 class TicTacBoard extends StatelessWidget {
@@ -6,14 +7,16 @@ class TicTacBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Result(),
-        Result(),
+        Result(
+          score: xScore,
+        ),
+        Result(
+          score: oScore,
+        ),
       ],
     );
   }
 }
-
-

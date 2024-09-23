@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   const Result({
-    super.key,
+    super.key, required this.score,
   });
-
+ final int score;
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      '0',
-      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+    return Text(
+      '$score',
+      style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
     );
   }
 }
