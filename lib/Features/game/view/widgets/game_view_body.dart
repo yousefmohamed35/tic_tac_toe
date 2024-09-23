@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tic_tac_app/Features/game/data/cubit/game_bloc_cubit.dart';
 import 'package:tic_tac_app/Features/game/data/data.dart';
-import 'package:tic_tac_app/Features/game/view/game_view.dart';
+import 'package:tic_tac_app/Features/game/view/widgets/custom_button.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/grid_view.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/player_is_playing.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/team_name_section.dart';
@@ -64,7 +64,7 @@ class GameViewBody extends StatelessWidget {
           backgroundColor: kPrimaryColor,
           content: Text(message),
           actions: [
-            ElevatedButton(
+            CustomButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) {
@@ -75,21 +75,21 @@ class GameViewBody extends StatelessWidget {
                     .newGame(); // Close the dialog
                 // Restart the game
               },
-              child: const Text('New Game'),
+              text: 'New Game',
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                cubitContext
-                    .read<GameBlocCubit>()
-                    .restartGame(); // Close the dialog
-                // Restart the game
-              },
-              child: const Text('Restart'),
-            ),
+            CustomButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  cubitContext
+                      .read<GameBlocCubit>()
+                      .restartGame(); // Close the dialog
+                  // Restart the game
+                },
+                text: 'restart')
           ],
         );
       },
     );
   }
 }
+
