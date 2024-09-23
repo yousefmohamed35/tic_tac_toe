@@ -6,6 +6,7 @@ import 'package:tic_tac_app/Features/game/view/widgets/grid_view.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/player_is_playing.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/team_name_section.dart';
 import 'package:tic_tac_app/Features/game/view/widgets/tic_tac_board.dart';
+
 class GameViewBody extends StatelessWidget {
   const GameViewBody({super.key});
 
@@ -32,9 +33,12 @@ class GameViewBody extends StatelessWidget {
             state: state,
           ),
           const SizedBox(height: 32),
+          SizedBox(
+            height: 100,
+            child: Image.asset('assets/images/tic.png'),
+          )
         ]);
       },
     );
   }
 }
-
