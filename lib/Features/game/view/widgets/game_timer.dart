@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:tic_tac_app/Features/game/data/data.dart';
+
 
 class GameTimer extends StatefulWidget {
   const GameTimer({
@@ -25,10 +24,7 @@ class _GameTimerState extends State<GameTimer> {
         });
       } else {
         timer.cancel();
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('Time is up!')));
-        second = currentSecond;
-        clearData();
+        
         setState(() {});
       }
     });
